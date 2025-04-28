@@ -55,7 +55,7 @@ enum class BottomBarScreen(val label: String, val icon: @Composable () -> Unit) 
 }
 
 class MainActivity : ComponentActivity() {
-    // Variables para manejar fotos y contactos
+    // Variables para manejar contactos
     private var currentPhotoPath by mutableStateOf<String?>(null)
     private var tempContactName by mutableStateOf("")
     private var tempContactPhone by mutableStateOf("")
@@ -130,14 +130,14 @@ class MainActivity : ComponentActivity() {
                     )
                     BottomBarScreen.Contacts -> MainScreen(
                         onSaveContact = { name, phone ->
-                            // 1️⃣ guarda datos temporales
+                            
                             tempContactName = name
                             tempContactPhone = phone
-                            // 2️⃣ bitmap por defecto
+                            
                             val bmp = BitmapFactory.decodeResource(
                                 resources, R.drawable.contact
                             )
-                            // 3️⃣ crea archivo y escribe JPEG
+                            
                             val photoFile = try {
                                 createImageFile()
                             } catch (e: IOException) {
